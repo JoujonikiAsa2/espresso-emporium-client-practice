@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 
 const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
     
+
     const handleDelete = (id) => {
         console.log(id)
 
@@ -48,7 +49,7 @@ const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
             </div>
             <div className="flex flex-col text-sm gap-2">
                 <Link to='/coffeeDetails' className="flex justify-center items-center w-10 h-12 bg-[#D2B48C] rounded-lg text-white text-lg"><button><FiEye></FiEye></button></Link>
-                <Link to={`/updateCoffee/:${coffee._id}`} className="flex justify-center items-center w-10 h-12 bg-[#3C393B] rounded-lg text-white text-lg"><button><FiEdit></FiEdit></button></Link>
+                <Link to={`updateCoffee/${coffee._id}`} className="flex justify-center items-center w-10 h-12 bg-[#3C393B] rounded-lg text-white text-lg"><button><FiEdit></FiEdit></button></Link>
                 <Link className="flex justify-center items-center w-10 h-12 bg-[#EA4744] rounded-lg text-white text-lg"><button onClick={() => handleDelete(coffee._id)}><AiFillDelete></AiFillDelete></button></Link>
             </div>
         </div>
