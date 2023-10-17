@@ -7,16 +7,18 @@ import { FiCoffee } from 'react-icons/fi'
 import { Link, useLoaderData } from 'react-router-dom'
 import InstaPhoto from '../InstaPhoto/InstaPhoto'
 import { useEffect, useState } from 'react'
+import CoffeeCard from '../CoffeeCard/CoffeeCard'
 
 const Home = () => {
-    const [coffes,setCoffes] = useState([])
-    const favorites = useLoaderData()
 
-    useEffect(()=>{
-        fetch('http://localhost:5000/coffee')
-        .then(res=>res.json())
-        .then(data=>setCoffes(data))
-    },[])
+    const loadedCoffees = useLoaderData()
+    const [coffees, setCoffees] = useState(loadedCoffees);
+    const [favorites, setFavorite] = useState([])
+    useEffect(() => {
+        fetch('./favorite.json')
+            .then(res => res.json())
+            .then(data => setFavorite(data))
+    }, [])
     return (
         <div>
             <div>
@@ -26,7 +28,7 @@ const Home = () => {
                 <div className="hero-content absolute left-[35vw] bottom-[20vh]">
                     <div className="w-1/2 text-[#FFF]">
                         <h1 className="mb-5 text-2xl font-bold">Would you like a Cup of Delicious Coffee?</h1>
-                        <p className="mb-5 font-raleway text-sm font-thin">It's coffee time - Sip & Savor - Relaxation in every sip! Get the nostalgia back!! Your companion of every moment!!! Enjoy the beautiful moments and make them memorable.</p>
+                        <p className="mb-5 font-raleway text-sm font-thin">It&apos;s coffee time - Sip & Savor - Relaxation in every sip! Get the nostalgia back!! Your companion of every moment!!! Enjoy the beautiful moments and make them memorable.</p>
                         <button className="btn btn-sm font-raleway capitalize text-[#313131]">Learn More</button>
                     </div>
                 </div>
@@ -57,9 +59,13 @@ const Home = () => {
                 <p className=' font-raleway text-2xl'>--- Sip & Savor ---</p>
                 <h2 className='text-3xl font-bold'>Our Popular Products</h2>
                 <Link to="/addCoffee"><button className='btn btn-sm capitalize font-medium'>Add Coffee <FiCoffee></FiCoffee></button></Link>
-                <div className='grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 max-w-5xl mx-auto gap-8'>
+                <div className='grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 max-w-5xl mx-auto gap-12'>
                     {
-                        coffes.map(coffee=><p key={coffee._id}>{coffee.name}</p>)
+                        coffees.map(coffee => <CoffeeCard
+                            key={coffee._id}
+                            coffee={coffee}
+                            coffees={coffees}
+                            setCoffees={setCoffees}></CoffeeCard>)
                     }
                 </div>
             </div>

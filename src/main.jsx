@@ -8,6 +8,7 @@ import Home from './components/Home/home.jsx'
 import AddCoffee from './components/AddCoffee/AddCoffee.jsx'
 import Users from './components/Users/Users.jsx'
 import NewUser from './components/NewUser/NewUser.jsx'
+import UpdateCoffee from './components/UpdateCoffee/UpdateCoffee.jsx'
 
 const router = createBrowserRouter([{
   path:'/',
@@ -16,11 +17,16 @@ const router = createBrowserRouter([{
     {
       path: '/',
       element: <Home></Home>,
-      loader: ()=>fetch("/favorite.json"),
+      loader: ()=>fetch("http://localhost:5000/coffee"),
     },
     {
       path: '/addCoffee',
       element: <AddCoffee></AddCoffee>
+    },
+    {
+      path: '/updateCoffee/:id',
+      element: <UpdateCoffee></UpdateCoffee>,
+      loader: ({params}) => fetch(`http://localhost:5000/coffee/${params.id}`)
     },
     {
       path: '/users',

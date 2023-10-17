@@ -11,12 +11,12 @@ const AddCoffee = () => {
         const name = form.name.value;
         const chef = form.chef.value;
         const supplier = form.supplier.value;
-        const test = form.test.value;
+        const price = form.price.value;
         const category = form.category.value;
         const details = form.details.value;
         const photo = form.photo.value;
         // console.log(name, chef,supplier,test,category,details,photo)
-        const coffee = { name, chef, supplier, test, category, details, photo }
+        const coffee = { name, chef, supplier, price, category, details, photo }
 
         fetch('http://localhost:5000/coffee', {
             method: "POST",
@@ -43,7 +43,7 @@ const AddCoffee = () => {
         <div className="md:max-w-4xl lg:max-w-5xl mx-auto my-20">
             <div className="mb-8"><Link to='/' className=" flex gap-3 items-center"><FiArrowLeft></FiArrowLeft>Back To Home</Link></div>
             <div className=" bg-[#F4F3F0] p-12 md:p-8 lg:p-20">
-                <div className="text-center py-8 space-y-4 px-4">
+                <div className="text-center pb-8 space-y-4 px-4">
                     <h2 className="text-2xl italic font-bold font-raleway">Add New Coffee</h2>
                     <p className="text-sm">It is a long established fact that a reader will be distraceted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here.</p>
                 </div>
@@ -71,9 +71,9 @@ const AddCoffee = () => {
                         </div>
                         <div className="form-control w-1/2">
                             <label className="">
-                                <span className="">Taste</span>
+                                <span className="">Price</span>
                             </label>
-                            <input type="text" name="test" placeholder="Enter coffee test" className="input input-bordered" required/>
+                            <input type="text" name="price" placeholder="Enter coffee price" className="input input-bordered" required/>
                         </div>
                     </div>
                     <div className="flex lg:flex-row md:flex-col flex-col gap-4 items-center">
