@@ -20,7 +20,7 @@ const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/coffee/${id}`, {
+                fetch(`https://espresso-emporium-server-practice-ckrso2ovw.vercel.app/coffee/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -40,15 +40,15 @@ const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
         })
     }
     return (
-        <div className="flex w-full justify-center items-center gap-4 border-2 shadow rounded pr-8">
+        <div className="flex md:flex-row lg:flex-row flex-col w-full justify-center items-center gap-4 border-2 shadow rounded pr-8">
             <img src={coffee.photo} alt="" className="w-48 h-60" />
             <div className="font-raleway">
                 <p className="text-sm w-36"><span className="text-sm font-bold">Name: </span> {coffee.name}</p>
-                <p className="text-sm w-36"><span className="text-sm font-bold">Chef: </span> {coffee.chef}</p>
+                <p className="text-sm w-36"><span className="text-sm font-bold">Chef: </span> {coffee.chef}tk</p>
                 <p className="text-sm w-36"><span className="text-sm font-bold">price: </span> {coffee.price}</p>
             </div>
-            <div className="flex flex-col text-sm gap-2">
-                <Link to='/coffeeDetails' className="flex justify-center items-center w-10 h-12 bg-[#D2B48C] rounded-lg text-white text-lg"><button><FiEye></FiEye></button></Link>
+            <div className="flex flex-row md:flex-col lg:flex-col text-sm gap-2 py-6">
+                <Link to={`readCoffee/${coffee._id}`} className="flex justify-center items-center w-10 h-12 bg-[#D2B48C] rounded-lg text-white text-lg"><button><FiEye></FiEye></button></Link>
                 <Link to={`updateCoffee/${coffee._id}`} className="flex justify-center items-center w-10 h-12 bg-[#3C393B] rounded-lg text-white text-lg"><button><FiEdit></FiEdit></button></Link>
                 <Link className="flex justify-center items-center w-10 h-12 bg-[#EA4744] rounded-lg text-white text-lg"><button onClick={() => handleDelete(coffee._id)}><AiFillDelete></AiFillDelete></button></Link>
             </div>

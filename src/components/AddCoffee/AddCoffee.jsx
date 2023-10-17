@@ -18,7 +18,7 @@ const AddCoffee = () => {
         // console.log(name, chef,supplier,test,category,details,photo)
         const coffee = { name, chef, supplier, price, category, details, photo }
 
-        fetch('http://localhost:5000/coffee', {
+        fetch('https://espresso-emporium-server-practice-ckrso2ovw.vercel.app/coffee', {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(coffee)
@@ -40,7 +40,7 @@ const AddCoffee = () => {
     }
     return (
 
-        <div className="md:max-w-4xl lg:max-w-5xl mx-auto my-20">
+        <div className="md:max-w-4xl lg:max-w-5xl mx-auto my-20 p-6">
             <div className="mb-8"><Link to='/' className=" flex gap-3 items-center"><FiArrowLeft></FiArrowLeft>Back To Home</Link></div>
             <div className=" bg-[#F4F3F0] p-12 md:p-8 lg:p-20">
                 <div className="text-center pb-8 space-y-4 px-4">
@@ -49,13 +49,13 @@ const AddCoffee = () => {
                 </div>
                 <form className="space-y-4 font-rancho" onSubmit={handleAddCoffee}>
                     <div className="flex lg:flex-row md:flex-col flex-col  gap-4  items-center">
-                        <div className="form-control w-1/2">
+                        <div className="form-control w-full md:w-1/2 lg:w-1/2">
                             <label className="">
                                 <span className="">Name</span>
                             </label>
                             <input type="text" name="name" placeholder="Enter coffee name" className="input input-bordered" required/>
                         </div>
-                        <div className="form-control w-1/2">
+                        <div className="form-control w-full md:w-1/2 lg:w-1/2">
                             <label className="">
                                 <span className="">Chef</span>
                             </label>
@@ -63,13 +63,13 @@ const AddCoffee = () => {
                         </div>
                     </div>
                     <div className="flex lg:flex-row md:flex-col flex-col gap-4 items-center">
-                        <div className="form-control w-1/2">
+                        <div className="form-control w-full md:w-1/2 lg:w-1/2">
                             <label className="">
                                 <span className="">Supplier</span>
                             </label>
                             <input type="text" name="supplier" placeholder="Enter coffee supplier" className="input input-bordered" required/>
                         </div>
-                        <div className="form-control w-1/2">
+                        <div className="form-control w-full md:w-1/2 lg:w-1/2">
                             <label className="">
                                 <span className="">Price</span>
                             </label>
@@ -77,13 +77,13 @@ const AddCoffee = () => {
                         </div>
                     </div>
                     <div className="flex lg:flex-row md:flex-col flex-col gap-4 items-center">
-                        <div className="form-control w-1/2">
+                        <div className="form-control w-full md:w-1/2 lg:w-1/2">
                             <label className="">
                                 <span className="">Category</span>
                             </label>
                             <input type="text" name="category" placeholder="Enter coffee category" className="input input-bordered" required/>
                         </div>
-                        <div className="form-control w-1/2">
+                        <div className="form-control w-full md:w-1/2 lg:w-1/2">
                             <label className="">
                                 <span className="">Details</span>
                             </label>
@@ -91,13 +91,13 @@ const AddCoffee = () => {
                         </div>
                     </div>
                     <div className="flex  flex-col gap-4 items-center">
-                        <div className="form-control w-1/2 lg:w-full">
+                        <div className="form-control w-full md:w-1/2 lg:w-1/2 lg:w-full">
                             <label className="">
                                 <span className="">Photo</span>
                             </label>
                             <input type="text" name="photo" placeholder="Enter photo URL" className="input input-bordered " required/>
                         </div>
-                        <div className="form-control w-1/2 lg:w-full pb-8 lg:pb-10">
+                        <div className="form-control w-full md:w-1/2 lg:w-1/2 lg:w-full pb-8 lg:pb-10">
                             <input type="submit" value="Add Coffee" className="input input-bordered font-bold italic bg-[#D2B48C]" />
                         </div>
                     </div>
